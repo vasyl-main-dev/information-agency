@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Information Agency Home</h1>
+  <p>Welcome to Best Information Agency Ever!</p>
+  <h2>Dynamic content</h2>
+  <p>The Information Agency has the following record counts:</p>
+  <ul>
+    <li><strong>Cars:</strong> {{ num_cars }}</li>
+    <li><strong>Drivers:</strong> {{ num_drivers }}</li>
+    <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
+  </ul>
+{% endblock %}
