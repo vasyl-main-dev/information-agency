@@ -4,10 +4,14 @@
   <h1>Information Agency Home</h1>
   <p>Welcome to Best Information Agency Ever!</p>
   <h2>Dynamic content</h2>
-  <p>The Information Agency has the following record counts:</p>
-  <ul>
-    <li><strong>Cars:</strong> {{ num_cars }}</li>
-    <li><strong>Drivers:</strong> {{ num_drivers }}</li>
-    <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
-  </ul>
+  <p>Our redactors:</p>
+  {% if redactors %}
+    <ul>
+      {% for redactor in redactors %}
+        <li><strong>{{ redactor.username }}:</strong> {{ redactor.first_name }} {{ redactor.last_name }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No redactors yet(((</p>
+  {% endif %}
 {% endblock %}
