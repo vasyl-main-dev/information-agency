@@ -4,14 +4,16 @@ from main.views import (
     index,
     RedactorListView,
     RedactorDetailView,
-    RedactorDeleteView
+    RedactorDeleteView,
+    RedactorCreateView
 )
 
 urlpatterns = [
     path("", index, name="index"),
     path("redactors/", RedactorListView.as_view(), name="redactor-list"),
-    path("redactor/<int:pk>/", RedactorDetailView.as_view(), name="redactor-detail"),
-    path("redactor/<int:pk>/delete/", RedactorDeleteView.as_view(), name="redactor-delete"),
+    path("redactors/<int:pk>/", RedactorDetailView.as_view(), name="redactor-detail"),
+    path("redactors/<int:pk>/delete/", RedactorDeleteView.as_view(), name="redactor-delete"),
+    path("redactors/create/", RedactorCreateView.as_view(), name="redactor-create"),
 ]
 
 app_name = "main"

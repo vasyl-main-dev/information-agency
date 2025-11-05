@@ -1,7 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
+from main.forms import RedactorCreationForm
 from main.models import Redactor
 
 
@@ -22,4 +24,10 @@ class RedactorDetailView(generic.DetailView):
 
 class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Redactor
-    success_url = "main:redactor-list"
+    success_url = reverse_lazy("main:redactor-list")
+
+
+class RedactorCreateView(generic.CreateView):
+    model = Redactor
+    form_class = RedactorCreationForm
+    success_url = reverse_lazy("main:redactor-list")
