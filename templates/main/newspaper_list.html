@@ -16,9 +16,9 @@
     <ul>
       {% for newspaper in newspaper_list %}
         <li>
-{#          <a href="{% url 'main:newspaper-detail' pk=newspaper.id %}">#}
-{#            {{ newspaper.title }}#}
-{#          </a>#}
+          <a href="{% url 'main:news-detail' pk=newspaper.id %}">
+            {{ newspaper.title }}
+          </a>
           <br>
           🗂️ Topics:
           {% for topic in newspaper.topics.all %}
@@ -29,6 +29,7 @@
           <br>
           🕒 Published: {{ newspaper.published_date|date:"d.m.Y" }}
         </li>
+        <br>
       {% endfor %}
     </ul>
   {% else %}

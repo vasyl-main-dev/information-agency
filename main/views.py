@@ -36,3 +36,7 @@ class RedactorCreateView(generic.CreateView):
 class NewspaperListView(generic.ListView):
     model = Newspaper
     paginate_by = 10
+
+
+class NewspaperDetailView(generic.DetailView):
+    model = Newspaper
