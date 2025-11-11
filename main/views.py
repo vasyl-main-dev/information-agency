@@ -35,8 +35,13 @@ class RedactorCreateView(generic.CreateView):
 
 class NewspaperListView(generic.ListView):
     model = Newspaper
-    paginate_by = 10
+    paginate_by = 5
 
 
 class NewspaperDetailView(generic.DetailView):
     model = Newspaper
+
+
+class NewspaperDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Newspaper
+    success_url = reverse_lazy("main:newspaper-list")
