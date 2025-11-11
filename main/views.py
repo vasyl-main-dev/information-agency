@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from main.forms import RedactorCreationForm, NewsCreationForm
+from main.forms import RedactorCreationForm, NewsCreationForm, NewspaperSearchForm, RedactorSearchForm
 from main.models import Redactor, Newspaper
 
 
@@ -16,6 +16,20 @@ def index(request):
 class RedactorListView(generic.ListView):
     model = Redactor
     paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        username = self.request.GET.get("username")
+        context["search_form"] = RedactorSearchForm(initial={"username": username})
+        return context
+
+    def get_queryset(self):
+        queryset = Redactor.objects.all()
+        username = self.request.GET.get("username")
+
+        if username:
+            return queryset.filter(username__icontains=username)
+        return queryset
 
 
 class RedactorDetailView(generic.DetailView):
@@ -36,6 +50,20 @@ class RedactorCreateView(generic.CreateView):
 class NewspaperListView(generic.ListView):
     model = Newspaper
     paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        title = self.request.GET.get("title", "")
+        context["search_form"] = NewspaperSearchForm(initial={"title": title})
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        title = self.request.GET.get("title")
+
+        if title:
+            queryset = queryset.filter(title__icontains=title)
+        return queryset
 
 
 class NewspaperDetailView(generic.DetailView):

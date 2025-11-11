@@ -30,3 +30,29 @@ class NewsCreationForm(forms.ModelForm):
     class Meta:
         model = Newspaper
         fields = ("title", "content", "topics", "publishers")
+
+
+class NewspaperSearchForm(forms.Form):
+    title = forms.CharField(
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "🔍 Search by title...",
+                "class": "form-control"
+            }
+        ),
+    )
+
+
+class RedactorSearchForm(forms.Form):
+    username = forms.CharField(
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "🔍 Search by username...",
+                "class": "form-control"
+            }
+        )
+    )

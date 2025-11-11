@@ -19,7 +19,7 @@
   <p>
     <strong>🧑‍💼 Publishers:</strong>
     {% for publisher in newspaper.publishers.all %}
-      <a href="{% url 'main:redactor-detail' pk=publisher.id %}">{{ publisher.username }}</a>
+      <a href="{% url 'main:redactor-detail' pk=publisher.id %}">{{ publisher.username }}</a>{% if not forloop.last %}, {% endif %}
     {% endfor %}
   </p>
   <p><strong>📰 Content:</strong> {{ newspaper.content }}</p>
