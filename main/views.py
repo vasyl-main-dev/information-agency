@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from main.forms import RedactorCreationForm
+from main.forms import RedactorCreationForm, NewsCreationForm
 from main.models import Redactor, Newspaper
 
 
@@ -44,4 +44,10 @@ class NewspaperDetailView(generic.DetailView):
 
 class NewspaperDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Newspaper
+    success_url = reverse_lazy("main:newspaper-list")
+
+
+class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Newspaper
+    form_class = NewsCreationForm
     success_url = reverse_lazy("main:newspaper-list")
