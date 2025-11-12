@@ -1,17 +1,85 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>🏛️ Information Agency | Home</title>
+{% endblock %}
 
 {% block content %}
-  <h1>Information Agency Home</h1>
-  <p>Welcome to Best Information Agency Ever!</p>
-  <h2>Dynamic content</h2>
-  <p>Our redactors:</p>
-  {% if redactors %}
-    <ul>
-      {% for redactor in redactors %}
-        <li><strong>{{ redactor.username }}:</strong> {{ redactor.first_name }} {{ redactor.last_name }}</li>
+<div class="container mt-4">
+
+  <!-- Заголовок -->
+  <div class="text-center mb-5">
+    <h1 class="fw-bold">📰 Information Agency Dashboard</h1>
+    <p class="text-muted">
+      Your source for news, insights, and the latest publications from our editorial team.
+    </p>
+    <hr class="my-4">
+  </div>
+
+  <!-- Статистика -->
+  <div class="row text-center mb-5">
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm border-0 bg-primary text-white">
+        <div class="card-body">
+          <h4 class="card-title">🧑‍💻 Redactors</h4>
+          <p class="display-5 fw-bold">{{ num_redactors }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm border-0 bg-success text-white">
+        <div class="card-body">
+          <h4 class="card-title">📰 Newspapers</h4>
+          <p class="display-5 fw-bold">{{ num_newspapers }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm border-0 bg-info text-dark">
+        <div class="card-body">
+          <h4 class="card-title">📚 Topics</h4>
+          <p class="display-5 fw-bold">{{ num_topics }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Останні новини -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-dark text-white">
+      <h4 class="mb-0">🗞️ Latest News</h4>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      {% for news in latest_news %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <a href="{% url 'main:newspaper-detail' news.id %}" class="fw-bold text-decoration-none">
+              {{ news.title }}
+            </a>
+            <p class="mb-0 text-muted small">
+              {{ news.published_date }} |
+              {% for topic in news.topics.all %}
+                <span class="badge bg-secondary">{{ topic.name }}</span>
+              {% endfor %}
+            </p>
+          </div>
+        </li>
+      {% empty %}
+        <li class="list-group-item text-muted text-center">No newspapers published yet.</li>
       {% endfor %}
     </ul>
-  {% else %}
-    <p>No redactors yet(((</p>
-  {% endif %}
+  </div>
+
+  <!-- Кнопка переходу -->
+  <div class="text-center mt-4">
+    <a href="{% url 'main:newspaper-list' %}" class="btn btn-outline-primary btn-lg">
+      Browse All Newspapers →
+    </a>
+  </div>
+
+</div>
 {% endblock %}

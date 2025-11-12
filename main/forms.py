@@ -5,6 +5,13 @@ from main.models import Redactor, Newspaper, Topic
 
 
 class RedactorCreationForm(UserCreationForm):
+    year_of_experience = forms.IntegerField(
+        min_value=0,
+        max_value=50,
+        label="Years of experience",
+        widget=forms.NumberInput(attrs={"class": "form-control", "placeholder": "Enter years of experience"}),
+    )
+
     class Meta(UserCreationForm.Meta):
         model = Redactor
         fields = UserCreationForm.Meta.fields + (
