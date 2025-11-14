@@ -1,6 +1,7 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseForbidden
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 
@@ -52,8 +53,15 @@ class RedactorDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("main:redactor-list")
 
     def dispatch(self, request, *args, **kwargs):
-        if self.get_object() != request.user:
-            return HttpResponseForbidden("You can delete only your own account!")
+        redactor = self.get_object()
+
+        if redactor != request.user:
+            messages.error(
+                request,
+                "❌ You can only delete your own account."
+            )
+            return redirect(request.META.get("HTTP_REFERER", "/"))
+
         return super().dispatch(request, *args, **kwargs)
 
 
