@@ -1,21 +1,312 @@
-  body {
-    background-color: #f9f9f9;
-  }
+/* ============= BASE LAYOUT ============= */
 
-  .sidebar-nav {
-    position: sticky;
-    top: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
+body.main-body {
+    background: #020617;          /* темний фон */
+    color: #e5e7eb;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
 
-  .link-to-page {
+.main-wrapper {
+    min-height: 100vh;
+}
+
+/* щоб контент не лип до країв */
+.container,
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* ============= SIDEBAR ============= */
+
+.sidebar-nav {
+    background: #020617;
+    border-radius: 16px;
+    padding: 18px 16px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
+}
+
+.sidebar-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #e5e7eb;
+}
+
+.sidebar-nav .list-group-item {
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    padding: 10px 10px;
+    border-radius: 999px;
+    font-weight: 500;
+    display: block;
+}
+
+.sidebar-nav .list-group-item a {
+    color: inherit;
     text-decoration: none;
-    color: #343a40;
-  }
+    display: block;
+}
 
-  .link-to-page:hover {
-    color: #007bff;
-  }
+.sidebar-nav .list-group-item:hover,
+.sidebar-nav .list-group-item.active {
+    background: radial-gradient(circle at top left, #6366f1, #8b5cf6);
+    color: #f9fafb;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.45);
+}
+
+.sidebar-username {
+    font-weight: 600;
+    color: #e5e7eb;
+}
+
+/* ============= TYPOGRAPHY / HERO ============= */
+
+h1, h2, h3, h4 {
+    color: #f9fafb;
+}
+
+.hero-subtitle {
+    color: #cbd5f5;
+    font-size: 0.95rem;
+}
+
+/* ============= CARDS / PANELS ============= */
+
+.custom-card,
+.news-card,
+.stat-card {
+    background: #020617;
+    border-radius: 18px;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+}
+
+/* стат-карточки зверху */
+.stat-card {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 50px rgba(15, 23, 42, 1);
+}
+
+.stat-blue {
+    background: radial-gradient(circle at top left, #1d4ed8, #1e40af);
+}
+
+.stat-green {
+    background: radial-gradient(circle at top left, #16a34a, #166534);
+}
+
+.stat-purple {
+    background: radial-gradient(circle at top left, #7c3aed, #4c1d95);
+}
+
+/* блок з новинами */
+.news-card {
+    padding: 20px 24px;
+}
+
+/* елементи списків-новин */
+.hover-card {
+    background: transparent;
+    border-radius: 12px;
+    transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.hover-card:hover {
+    background: rgba(15, 23, 42, 0.8);
+    transform: translateY(-1px);
+}
+
+/* заголовок новини */
+.news-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #e5e7eb;
+}
+
+.news-title:hover {
+    color: #a5b4fc;
+}
+
+/* мета-інфа під новиною */
+.news-meta {
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+/* бейдж теми */
+.badge-topic {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(79, 70, 229, 0.14);
+    color: #c7d2fe;
+    font-size: 0.75rem;
+    margin-left: 4px;
+}
+
+/* ============= BUTTONS ============= */
+
+.btn-main,
+.btn-primary {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border: none;
+    color: #f9fafb;
+    font-weight: 600;
+    padding: 0.45rem 1.4rem;
+    border-radius: 999px;
+    box-shadow: 0 10px 24px rgba(79, 70, 229, 0.55);
+}
+
+.btn-main:hover,
+.btn-primary:hover {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff;
+}
+
+.btn-outline-secondary,
+.btn-secondary {
+    border-radius: 999px;
+    border-color: #4b5563;
+    color: #e5e7eb;
+    padding: 0.4rem 1.3rem;
+}
+
+.btn-outline-secondary:hover,
+.btn-secondary:hover {
+    background-color: #4b5563;
+    color: #f9fafb;
+}
+
+.btn-danger {
+    border-radius: 999px;
+    padding: 0.4rem 1.4rem;
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    border: none;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.6);
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+}
+
+/* кнопка у формах пошуку */
+.btn-search {
+    margin-top: 0.6rem;
+}
+
+/* ============= FORMS ============= */
+
+.form-control,
+.search-input {
+    border-radius: 999px;
+    background: #020617;
+    border: 1px solid #1f2937;
+    color: #e5e7eb;
+}
+
+.form-control:focus,
+.search-input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 0.15rem rgba(79, 70, 229, 0.45);
+    background: #020617;
+    color: #f9fafb;
+}
+
+.form-label {
+    color: #e5e7eb;
+}
+
+.form-check-input {
+    transform: scale(1.1);
+}
+
+/* Placeholder fix — make it visible on dark theme */
+.form-control::placeholder,
+.search-input::placeholder,
+input::placeholder,
+textarea::placeholder {
+    color: #a5b4fc !important;   /* ніжний світло-фіолетовий */
+    opacity: 0.85 !important;    /* більш помітний */
+}
+
+/* ============= AVATARS ============= */
+
+.avatar-lg {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #0ea5e9;
+    margin-right: 18px;
+}
+
+.avatar-md {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #0ea5e9;
+    margin-right: 14px;
+}
+
+/* ============= ANIMATIONS ============= */
+
+.fade-in {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============= TABLE-LIKE LISTS (newspaper_list, etc) ============= */
+
+.table-card {
+    background: #020617;
+    border-radius: 18px;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+}
+
+.table-card-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(55, 65, 81, 0.9);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e5e7eb;
+}
+
+.table-card-row {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(31, 41, 55, 0.85);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.table-card-row:last-child {
+    border-bottom: none;
+}
+
+.table-card-row:hover {
+    background: rgba(15, 23, 42, 0.85);
+}
+
+/* дата в правій колонці */
+.row-date {
+    color: #9ca3af;
+    font-size: 0.8rem;
+}

@@ -2,26 +2,47 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
-    Redactor list
-    <a href="{% url 'main:redactor-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-    <form action="" method="get" class="form-inline">
-      {{ search_form|crispy }}
-      <input type="submit" value="Search" class="btn btn-primary link-to-page">
-    </form>
-  {% if redactor_list %}
-    <ul>
-      {% for redactor in redactor_list %}
-        <li>
-          <a href="{% url "main:redactor-detail" pk=redactor.id %}">{{ redactor.username }}</a>
-          {{ redactor.first_name }} {{ redactor.last_name }}
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no redactors yet</p>
-  {% endif %}
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">👥 Redactors</h1>
+
+    {% if user.is_authenticated %}
+      <a href="{% url 'main:redactor-create' %}" class="btn btn-main">
+        ➕ Add Redactor
+      </a>
+    {% endif %}
+  </div>
+
+  <form method="get" class="mb-4">
+    {{ search_form|crispy }}
+    <button class="btn btn-main btn-search">Search</button>
+  </form>
+
+  <div class="row g-4">
+    {% for redactor in redactor_list %}
+      <div class="col-md-6 col-lg-4">
+        <div class="custom-card p-3 shadow-sm fade-in">
+          <div class="d-flex align-items-center">
+            <img src="https://api.dicebear.com/6.x/thumbs/svg?seed={{ redactor.username }}"
+                 class="avatar-md" alt="avatar">
+
+            <div class="ms-1">
+              <a href="{% url 'main:redactor-detail' redactor.id %}"
+                 class="fw-bold text-decoration-none text-light">
+                {{ redactor.username }}
+              </a>
+              <p class="mb-0" style="color:#cbd5f5;">
+                Experience: {{ redactor.year_of_experience }} yrs
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>No redactors found.</p>
+    {% endfor %}
+  </div>
+
+</div>
 {% endblock %}

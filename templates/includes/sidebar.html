@@ -1,18 +1,34 @@
-<ul class="sidebar-nav list-group">
+<div class="sidebar-nav list-group shadow-sm">
+
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <div class="sidebar-title d-flex align-items-center gap-2">
+      <span>📰</span>
+      <span>Information Agency</span>
+    </div>
+  </div>
+
   {% if user.is_authenticated %}
-    <li class="list-group-item">User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></li>
-    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+    <div class="mb-2 small sidebar-username">
+      User: <a href="{{ user.get_absolute_url }}" class="text-decoration-none text-primary">
+        {{ user.get_username }}
+      </a>
+    </div>
+
+    <form method="post" action="{% url 'logout' %}" class="mb-3">
       {% csrf_token %}
-      <button type="submit" class="btn btn-link list-group-item">Logout</button>
+      <button type="submit" class="btn btn-secondary w-100">
+        ⏏ Logout
+      </button>
     </form>
   {% else %}
-    <li class="list-group-item"><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+    <a href="{% url 'login' %}?next={{ request.path }}" class="btn btn-main w-100 mb-3 text-center">
+      🔐 Login
+    </a>
   {% endif %}
 
-  <br>
+  <hr class="text-secondary">
 
-  <li class="list-group-item"><a href="{% url 'main:index' %}">Home</a></li>
-  <li class="list-group-item"><a href="{% url 'main:redactor-list' %}">All redactors</a></li>
-  <li class="list-group-item"><a href="{% url 'main:newspaper-list' %}">Last news</a></li>
-  <li class="list-group-item"><a href="{% url 'main:index' %}">About us</a></li>
-</ul>
+  <a class="list-group-item" href="{% url 'main:index' %}">🏠 Home</a>
+  <a class="list-group-item" href="{% url 'main:redactor-list' %}">👥 Redactors</a>
+  <a class="list-group-item" href="{% url 'main:newspaper-list' %}">📰 Newspapers</a>
+</div>

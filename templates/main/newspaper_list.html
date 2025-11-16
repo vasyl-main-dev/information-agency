@@ -2,37 +2,43 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
-    Last news
-    <a href="{% url 'main:newspaper-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-    <form action="" method="get" class="form-inline">
-      {{ search_form|crispy }}
-      <input type="submit" value="Search" class="btn btn-primary link-to-page">
-    </form>
-  {% if newspaper_list %}
-    <ul>
-      {% for newspaper in newspaper_list %}
-        <li>
-          <a href="{% url 'main:newspaper-detail' pk=newspaper.id %}">
-            {{ newspaper.title }}
-          </a>
-          <br>
-          🗂️ Topics:
-          {% for topic in newspaper.topics.all %}
-            {{ topic.name }}{% if not forloop.last %}, {% endif %}
-          {% empty %}
-            <em>Without topics</em>
-          {% endfor %}
-          <br>
-          🕒 Published: {{ newspaper.published_date|date:"d.m.Y" }}
-        </li>
-        <br>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no newspapers yet</p>
-  {% endif %}
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">📰 Newspapers</h1>
+
+    {% if user.is_authenticated %}
+      <a href="{% url 'main:newspaper-create' %}" class="btn btn-main">
+        ➕ Add Newspaper
+      </a>
+    {% endif %}
+  </div>
+
+  <form method="get" class="mb-4">
+    {{ search_form|crispy }}
+    <button class="btn btn-main btn-search">Search</button>
+  </form>
+
+  <div class="table-card">
+    <div class="table-card-header">
+      <span>📰</span>
+      <span>Published Newspapers</span>
+    </div>
+
+    {% for newspaper in newspaper_list %}
+      <div class="table-card-row">
+        <a href="{% url 'main:newspaper-detail' newspaper.id %}"
+           class="text-decoration-none text-light">
+          {{ newspaper.title }}
+        </a>
+        <span class="row-date">{{ newspaper.published_date }}</span>
+      </div>
+    {% empty %}
+      <div class="p-3 text-muted text-center">
+        No newspapers yet.
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
 {% endblock %}
