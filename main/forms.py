@@ -9,7 +9,9 @@ class RedactorCreationForm(UserCreationForm):
         min_value=0,
         max_value=50,
         label="Years of experience",
-        widget=forms.NumberInput(attrs={"class": "form-control", "placeholder": "Enter years of experience"}),
+        widget=forms.NumberInput(
+            attrs={"class": "form-control", "placeholder": "Enter years of experience"}
+        ),
     )
 
     class Meta(UserCreationForm.Meta):
@@ -44,10 +46,7 @@ class NewspaperSearchForm(forms.Form):
         required=False,
         label="",
         widget=forms.TextInput(
-            attrs={
-                "placeholder": "🔍 Search by title...",
-                "class": "form-control"
-            }
+            attrs={"placeholder": "🔍 Search by title...", "class": "form-control"}
         ),
     )
 
@@ -57,9 +56,6 @@ class RedactorSearchForm(forms.Form):
         required=False,
         label="",
         widget=forms.TextInput(
-            attrs={
-                "placeholder": "🔍 Search by username...",
-                "class": "form-control"
-            }
-        )
+            attrs={"placeholder": "🔍 Search by username...", "class": "form-control"}
+        ),
     )

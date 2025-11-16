@@ -6,7 +6,12 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 
 
-from main.forms import RedactorCreationForm, NewsCreationForm, NewspaperSearchForm, RedactorSearchForm
+from main.forms import (
+    RedactorCreationForm,
+    NewsCreationForm,
+    NewspaperSearchForm,
+    RedactorSearchForm,
+)
 from main.models import Redactor, Newspaper, Topic
 
 
@@ -56,10 +61,7 @@ class RedactorDeleteView(LoginRequiredMixin, DeleteView):
         redactor = self.get_object()
 
         if redactor != request.user:
-            messages.error(
-                request,
-                "❌ You can only delete your own account."
-            )
+            messages.error(request, "❌ You can only delete your own account.")
             return redirect(request.META.get("HTTP_REFERER", "/"))
 
         return super().dispatch(request, *args, **kwargs)
@@ -109,4 +111,3 @@ class NewspaperCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return self.object.get_absolute_url()
-
