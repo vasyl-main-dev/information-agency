@@ -1,29 +1,32 @@
 /* ============= BASE LAYOUT ============= */
 
 body.main-body {
-    background: #020617;          /* темний фон */
+    background: #111827;       /* був #020617 */
     color: #e5e7eb;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow-x: hidden;        /* фікс скролу */
 }
 
 .main-wrapper {
     min-height: 100vh;
+    padding-left: 15px;        /* фікс відступів */
+    padding-right: 15px;
 }
 
 /* щоб контент не лип до країв */
 .container,
 .container-fluid {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* ============= SIDEBAR ============= */
 
 .sidebar-nav {
-    background: #020617;
+    background: #1f2937;   /* був #020617 */
     border-radius: 16px;
     padding: 18px 16px;
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
 .sidebar-title {
@@ -50,9 +53,9 @@ body.main-body {
 
 .sidebar-nav .list-group-item:hover,
 .sidebar-nav .list-group-item.active {
-    background: radial-gradient(circle at top left, #6366f1, #8b5cf6);
-    color: #f9fafb;
-    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.45);
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.4);
 }
 
 .sidebar-username {
@@ -75,12 +78,14 @@ h1, h2, h3, h4 {
 
 .custom-card,
 .news-card,
-.stat-card {
-    background: #020617;
+.stat-card,
+.table-card {
+    background: #1f2937;    /* був #020617 */
     border-radius: 18px;
-    border: 1px solid rgba(148, 163, 184, 0.28);
-    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.35);
 }
+
 
 /* стат-карточки зверху */
 .stat-card {
@@ -117,9 +122,10 @@ h1, h2, h3, h4 {
 }
 
 .hover-card:hover {
-    background: rgba(15, 23, 42, 0.8);
+    background: rgba(255, 255, 255, 0.04);
     transform: translateY(-1px);
 }
+
 
 /* заголовок новини */
 .news-title {
@@ -227,12 +233,11 @@ h1, h2, h3, h4 {
 
 /* Placeholder fix — make it visible on dark theme */
 .form-control::placeholder,
-.search-input::placeholder,
-input::placeholder,
-textarea::placeholder {
-    color: #a5b4fc !important;   /* ніжний світло-фіолетовий */
-    opacity: 0.85 !important;    /* більш помітний */
+.search-input::placeholder {
+    color: #d1d5ff !important;  /* ще світліший */
+    opacity: 1 !important;
 }
+
 
 /* ============= AVATARS ============= */
 
@@ -309,4 +314,11 @@ textarea::placeholder {
 .row-date {
     color: #9ca3af;
     font-size: 0.8rem;
+}
+
+/* пусті списки */
+.empty-state {
+    color: #e2e8f0 !important;   /* світло-сірий, добре видно */
+    font-size: 0.95rem;
+    opacity: 0.95;
 }

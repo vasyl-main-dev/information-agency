@@ -53,37 +53,7 @@ The project uses:
 - **Bootstrap 5**
 - **Crispy Forms**
 - **DiceBear Avatars API**
-- **SQLite3 (default)**  
-
----
-
-## 🧩 Project Structure Overview
-
-```
-information-agency/
-│
-├── main/
-│   ├── models.py
-│   ├── views.py
-│   ├── urls.py
-│   ├── templates/
-│   └── forms.py
-│
-├── templates/
-│   ├── base.html
-│   └── includes/
-│
-├── static/
-│   └── css/styles.css
-│
-├── information_agency/
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-│
-├── manage.py
-└── README.md
-```
+- **SQLite3 (default)**
 
 ---
 
