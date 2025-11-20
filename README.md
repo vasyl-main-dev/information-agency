@@ -69,7 +69,7 @@ The project uses:
 ## 🧪 How to Run Locally
 
 ```bash
-git clone https://github.com/RangerLeoo/information-agency.git
+git clone https://github.com/vasyl-main-dev/information-agency.git
 cd information-agency
 
 python -m venv venv
