@@ -8,9 +8,7 @@ class RedactorCreateViewTest(TestCase):
     def setUp(self):
         # Потрібно залогінити користувача, бо CreateView доступний тільки авторизованим
         self.existing_user = get_user_model().objects.create_user(
-            username="admin",
-            password="adminpass123",
-            year_of_experience=10
+            username="admin", password="adminpass123", year_of_experience=10
         )
         self.client.login(username="admin", password="adminpass123")
 

@@ -9,15 +9,11 @@ class RedactorDeleteViewTest(TestCase):
         self.User = get_user_model()
 
         self.user = self.User.objects.create_user(
-            username="user1",
-            password="password123",
-            year_of_experience=3
+            username="user1", password="password123", year_of_experience=3
         )
 
         self.other_user = self.User.objects.create_user(
-            username="user2",
-            password="password123",
-            year_of_experience=7
+            username="user2", password="password123", year_of_experience=7
         )
 
         self.client.login(username="user1", password="password123")

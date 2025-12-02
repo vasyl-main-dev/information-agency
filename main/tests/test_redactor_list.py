@@ -15,14 +15,10 @@ class RedactorListViewTest(TestCase):
         self.client.login(username="admin_user", password="adminpass123")
 
         self.red1 = get_user_model().objects.create_user(
-            username="vasyl",
-            password="pass1234",
-            year_of_experience=3
+            username="vasyl", password="pass1234", year_of_experience=3
         )
         self.red2 = get_user_model().objects.create_user(
-            username="andrii",
-            password="pass1234",
-            year_of_experience=2
+            username="andrii", password="pass1234", year_of_experience=2
         )
 
     def test_page_loads_successfully(self):

@@ -12,16 +12,12 @@ class NewspaperDeleteViewTest(TestCase):
 
         # author
         self.author = self.User.objects.create_user(
-            username="author",
-            password="pass123",
-            year_of_experience=5
+            username="author", password="pass123", year_of_experience=5
         )
 
         # another user
         self.other_user = self.User.objects.create_user(
-            username="intruder",
-            password="pass123",
-            year_of_experience=3
+            username="intruder", password="pass123", year_of_experience=3
         )
 
         # Topic
@@ -29,8 +25,7 @@ class NewspaperDeleteViewTest(TestCase):
 
         # Newspaper
         self.newspaper = Newspaper.objects.create(
-            title="Test News",
-            content="Some content..."
+            title="Test News", content="Some content..."
         )
         self.newspaper.topics.add(self.topic)
         self.newspaper.publishers.add(self.author)

@@ -17,11 +17,11 @@ class RedactorModelTest(TestCase):
             first_name="John",
             last_name="Doe",
             year_of_experience=10,
-            password="testpassword123"
+            password="testpassword123",
         )
         self.assertEqual(
             str(redactor),
-            f"{redactor.username}: {redactor.first_name} {redactor.last_name}"
+            f"{redactor.username}: {redactor.first_name} {redactor.last_name}",
         )
 
 
@@ -32,7 +32,7 @@ class NewspaperModelTest(TestCase):
             first_name="Max",
             last_name="Mad",
             year_of_experience=7,
-            password="superpassword123"
+            password="superpassword123",
         )
         self.topic = Topic.objects.create(name="Tech")
 

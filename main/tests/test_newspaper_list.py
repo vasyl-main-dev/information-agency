@@ -20,14 +20,12 @@ class NewspaperListViewTest(TestCase):
 
         # Створюємо газети
         self.news1 = Newspaper.objects.create(
-            title="Government reforms",
-            content="Some long text..."
+            title="Government reforms", content="Some long text..."
         )
         self.news1.topics.add(self.topic)
 
         self.news2 = Newspaper.objects.create(
-            title="Sports Weekly",
-            content="Sport content..."
+            title="Sports Weekly", content="Sport content..."
         )
         self.news2.topics.add(self.topic)
 

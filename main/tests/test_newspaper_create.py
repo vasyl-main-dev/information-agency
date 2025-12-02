@@ -8,9 +8,7 @@ class NewspaperCreateViewTest(TestCase):
     def setUp(self):
         # Створення користувача
         self.user = Redactor.objects.create_user(
-            username="testuser",
-            password="password123",
-            year_of_experience=5
+            username="testuser", password="password123", year_of_experience=5
         )
 
         # Створення теми
@@ -26,7 +24,7 @@ class NewspaperCreateViewTest(TestCase):
             "title": "Breaking News",
             "content": "Something very important happened.",
             "topics": [self.topic.id],
-            "publishers": [self.user.id]
+            "publishers": [self.user.id],
         }
 
         response = self.client.post(url, data)
