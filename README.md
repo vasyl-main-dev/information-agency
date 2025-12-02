@@ -66,6 +66,10 @@ The project uses:
 
 ---
 
+## 🚀 Deployed project
+
+https://information-agency.onrender.com
+
 ## 🧪 How to Run Locally
 
 ```bash
