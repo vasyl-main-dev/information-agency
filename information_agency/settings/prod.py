@@ -24,3 +24,14 @@ DATABASES = {
         "PORT": int(os.environ["POSTGRES_DB_PORT"]),
     }
 }
+
+# Усі запити тільки через HTTPS
+SECURE_SSL_REDIRECT = True
+
+# Cookies тільки по HTTPS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
